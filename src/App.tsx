@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
 import AddTodoForm from "./components/AddTodoForm";
+import TodoList from "./components/TodoList";
 
 const Container = styled.main`
   display: flex;
@@ -19,6 +20,7 @@ function App() {
       <Container>
         <GlobalStyle />
         <AddTodoForm />
+        <TodoList />
       </Container>
     </>
   );

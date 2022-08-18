@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { TodostProps } from "../../@types/global";
+import TodoItem from "./TodoItem";
 
 // styles
 const ListBox = styled.div`
@@ -19,7 +20,18 @@ const TodoList = () => {
   ]);
   return (
     <>
-      <ListBox></ListBox>
+      <ListBox>
+        <ul>
+          {todos.map((todo) => (
+            <TodoItem
+              id={todo.id}
+              key={todo.id}
+              title={todo.title}
+              completed={todo.completed}
+            />
+          ))}
+        </ul>
+      </ListBox>
     </>
   );
 };
