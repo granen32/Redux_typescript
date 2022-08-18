@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // createSlice => 임포트 리듀서를 간단하게 타입별로 나눠서 잘라 쓸 수 있게 해줌
 // types
 import { TodostProps } from "../../@types/global";
@@ -16,7 +16,7 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     // 투두 추가
-    addTodo: (state, action) => {
+    addTodo: (state: TodostProps[], action: PayloadAction<TodostProps[]>) => {
       const todo = {
         id: action.payload.id,
         title: action.payload.title,
@@ -34,6 +34,5 @@ export const todoSlice = createSlice({
     },
   },
 });
-
 export const { addTodo, toggleComplte, delteTodo } = todoSlice.reducer;
 export default todoSlice.reducer;

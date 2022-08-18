@@ -4,5 +4,6 @@ export interface TodostProps {
   id: number;
   title: string;
   completed: boolean;
-  addTodo? : 
 }
+
+// payload action type

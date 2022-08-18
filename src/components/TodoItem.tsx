@@ -1,7 +1,16 @@
 import React from "react";
 import { TodostProps } from "../../@types/global";
+import { useDispatch } from "react-redux";
+import { toggleComplete, deleteTodo } from "../redux/todoSlice";
 
 const TodoItem = ({ id, title, completed }: TodostProps) => {
+  const handleCheckboxClick = () => {
+    dispatch(toggleComple({ id, completed: !completed }));
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(deleteTodoAsync({ id }));
+  };
   return (
     <li>
       <div>
