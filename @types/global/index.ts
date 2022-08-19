@@ -7,3 +7,11 @@ export interface TodostProps {
 }
 
 // payload action type
+export type CustomAction = {
+  type: "todo";
+  todo: {
+    id: number;
+    title: string;
+    completed: boolean;
+  };
+};
