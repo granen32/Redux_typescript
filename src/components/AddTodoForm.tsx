@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/todoSlice";
 const FormWrap = styled.form`
   display: block;
   label {
@@ -17,9 +18,14 @@ const FormWrap = styled.form`
 
 const AddTodoForm = () => {
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(value);
+    if (value) {
+      dispatch(
+        addTodo({ id: new Date().getTime(), title: value, completed: false })
+      );
+    }
   };
   return (
     <>

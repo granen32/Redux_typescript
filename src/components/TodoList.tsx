@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addTodo } from "../redux/todoSlice";
+import { RootState } from "../redux/store";
 
 // styles
 const ListBox = styled.div`
@@ -13,13 +17,8 @@ const ListBox = styled.div`
 `;
 
 const TodoList = () => {
-  const todos = [
-    { id: 1, title: "todo1", completed: false },
-    { id: 2, title: "todo2", completed: false },
-    { id: 3, title: "todo3", completed: true },
-    { id: 4, title: "todo4", completed: false },
-    { id: 5, title: "todo5", completed: false },
-  ];
+  const dispatch = useDispatch();
+  const todos = useSelector((state: RootState) => state.todoSlice);
   return (
     <>
       <ListBox>

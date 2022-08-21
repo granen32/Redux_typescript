@@ -1,14 +1,14 @@
 import React from "react";
 import { TodosProps } from "../../@types/global";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../redux/hooks";
 import { toggleComplte, delteTodo } from "../redux/todoSlice";
 const TodoItem = ({ id, title, completed }: TodosProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleCheckboxClick = () => {
-    dispatch(toggleComplte({ completed: !completed, id }));
+    dispatch(toggleComplte({ completed: !completed, id, title }));
   };
   const handleDeleteClick = () => {
-    dispatch(delteTodo({ id, title, completed }));
+    dispatch(delteTodo({ id, completed, title }));
   };
   return (
     <li>
@@ -17,7 +17,7 @@ const TodoItem = ({ id, title, completed }: TodosProps) => {
           <input
             type="checkbox"
             checked={completed}
-            onClick={handleCheckboxClick}
+            onChange={handleCheckboxClick}
           />
           {title}
         </span>

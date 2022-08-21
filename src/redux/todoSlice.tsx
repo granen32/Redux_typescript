@@ -4,32 +4,44 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodosProps } from "../../@types/global";
 import { RootState } from "./store";
 
-const initialState = [] as TodosProps[];
 const TODOS = "TODOS";
 
 export const todoSlice = createSlice({
   name: TODOS,
-  initialState,
+  initialState: [
+    { id: 1, title: "add item to list", completed: false },
+    { id: 2, title: "you can delete item from list", completed: false },
+    { id: 3, title: "click on item to completed", completed: false },
+    { id: 4, title: "click on item again to uncompleted", completed: true },
+    {
+      id: 5,
+      title: "item got completeded will be push to end of the list",
+      completed: true,
+    },
+    {
+      id: 6,
+      title:
+        "item  uncompleteded will be push back in head of the list (try double click on this one)",
+      completed: false,
+    },
+  ],
   reducers: {
     // 투두 추가
     addTodo: (state, action: PayloadAction<TodosProps>) => {
-      const todo = {
-        id: action.payload.id,
+      const newItem = {
+        id: new Date().getTime(),
         title: action.payload.title,
-        completed: false,
+        completed: action.payload.completed,
       };
-      state.push(todo);
-    },
-    // 투두스 완성
-    toggleComplte: (
-      state,
-      action: PayloadAction<{ completed: boolean; id: number }>
-    ) => {
-      const index = state.findIndex((todo) => todo.id === action.payload.id);
-      state[index].completed = action.payload.completed;
+      state.push(newItem);
     },
     delteTodo: (state, action: PayloadAction<TodosProps>) => {
-      return state.filter((todo) => todo.id !== action.payload.id);
+      return state.filter((item) => item.id !== action.payload.id);
+    },
+    // 투두스 완성
+    toggleComplte: (state, action: PayloadAction<TodosProps>) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].completed = action.payload.completed;
     },
   },
 });
