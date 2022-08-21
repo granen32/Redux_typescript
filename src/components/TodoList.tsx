@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { addTodo } from "../redux/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { clearList } from "../redux/todoSlice";
 
 // styles
 const ListBox = styled.div`
@@ -19,6 +18,9 @@ const ListBox = styled.div`
 const TodoList = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todoSlice);
+  const handleClear = () => {
+    dispatch(clearList());
+  };
   return (
     <>
       <ListBox>
@@ -32,6 +34,9 @@ const TodoList = () => {
             />
           ))}
         </ul>
+        <button onClick={handleClear} className="w-100 btn btn-danger mt-3">
+          CLEAR LIST
+        </button>
       </ListBox>
     </>
   );

@@ -43,8 +43,13 @@ export const todoSlice = createSlice({
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].completed = action.payload.completed;
     },
+    // 전부 ㅂㅇ하기
+    clearList: (state) => {
+      return [];
+    },
   },
 });
-export const { addTodo, toggleComplte, delteTodo } = todoSlice.actions;
+export const { addTodo, toggleComplte, delteTodo, clearList } =
+  todoSlice.actions;
 export const useAppSelector = (state: RootState) => state.todoSlice;
 export default todoSlice.reducer;
