@@ -1,17 +1,17 @@
-// typesciprt 정의
 // todosProps의 타입 설정
-export interface TodostProps {
+interface TodostProps {
   id: number;
   title: string;
   completed: boolean;
 }
 
-// payload action type
-export type CustomAction = {
-  type: "todo";
-  todo: {
-    id: number;
-    title: string;
-    completed: boolean;
-  };
+type ToggleTodos = {
+  id: number;
+  completed: boolean;
 };
+
+type IdTodos = {
+  id: number;
+};
+
+export type { TodostProps, ToggleTodos, IdTodos };
