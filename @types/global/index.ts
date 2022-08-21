@@ -1,5 +1,5 @@
 // todosProps의 타입 설정
-interface TodostProps {
+interface TodosProps {
   id: number;
   title: string;
   completed: boolean;
@@ -14,4 +14,4 @@ type IdTodos = {
   id: number;
 };
 
-export type { TodostProps, ToggleTodos, IdTodos };
+export type { TodosProps, ToggleTodos, IdTodos };
