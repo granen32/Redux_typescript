@@ -17,7 +17,7 @@ const ListBox = styled.div`
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state: RootState) => state.todoSlice);
+  const todos = useSelector((state: RootState) => state.todos);
   const handleClear = () => {
     dispatch(clearList());
   };

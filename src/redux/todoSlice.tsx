@@ -50,5 +50,5 @@ export const todoSlice = createSlice({
 
 export const { addTodo, delteTodo, toggleComplte, clearList } =
   todoSlice.actions;
-export const useAppSelector = (state: RootState) => state.todoSlice;
+export const useAppSelector = (state: RootState) => state.todos;
 export default todoSlice.reducer;

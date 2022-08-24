@@ -5,7 +5,7 @@ import { persistReducer } from "redux-persist";
 import todoSlice from "./todoSlice";
 import thunk from "redux-thunk";
 const reducers = combineReducers({
-  todoSlice,
+  todos: todoSlice,
 });
 
 const persistConfig = {
