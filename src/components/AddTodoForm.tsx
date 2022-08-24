@@ -26,6 +26,7 @@ const AddTodoForm = () => {
         addTodo({ id: new Date().getTime(), title: value, completed: false })
       );
     }
+    setValue("");
   };
   return (
     <>

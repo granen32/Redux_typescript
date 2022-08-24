@@ -4,10 +4,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodosProps } from "../../@types/global";
 import { RootState } from "./store";
 
-const TODOS = "TODOS";
-
 export const todoSlice = createSlice({
-  name: TODOS,
+  name: "todos",
   initialState: [
     { id: 1, title: "add item to list", completed: false },
     { id: 2, title: "you can delete item from list", completed: false },
@@ -49,7 +47,8 @@ export const todoSlice = createSlice({
     },
   },
 });
-export const { addTodo, toggleComplte, delteTodo, clearList } =
+
+export const { addTodo, delteTodo, toggleComplte, clearList } =
   todoSlice.actions;
 export const useAppSelector = (state: RootState) => state.todoSlice;
 export default todoSlice.reducer;
